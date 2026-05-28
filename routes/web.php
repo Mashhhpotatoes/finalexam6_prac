@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\employeecontroller;
 
@@ -27,7 +28,17 @@ Route::middleware('auth')->group(function () {
     // Employee routes
     Route::get('employee', [\App\Http\Controllers\employeecontroller::class, 'index'])->name('employee.index');
 
+    //student routes
+    route::get('students', [\App\Http\Controllers\StudentController::class, 'index'])->name('studentmngt.index');
+    route::get('students/create', [\App\Http\Controllers\StudentController::class, 'create'])->name('studentmngt.create');
+    route::post('students', [\App\Http\Controllers\StudentController::class, 'store'])->name('studentmngt.store');
+
+
     
+    route::get('students/{id}/edit', [\App\Http\Controllers\StudentController::class, 'edit'])->name('studentmngt.edit');
+    route::put('students/{id}/edit', [\App\Http\Controllers\StudentController::class, 'update'])->name('studentmngt.update');
+    route::get('students/{id}/delete', [\App\Http\Controllers\StudentController::class, 'destroy'])->name('studentmngt.delete');
+
 
 
 
